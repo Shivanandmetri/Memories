@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextField, Button, Typography, Paper, Container } from "@mui/material";
+import { TextField, Button, Typography, Paper } from "@mui/material";
 
 import useStyles from "./styles.js";
 const Form = () => {
@@ -14,7 +14,14 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("dddd");
+    setPostData({
+      creator: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
+    });
+    console.log(postData);
   };
   return (
     <Paper className={classes.paper}>
@@ -25,14 +32,20 @@ const Form = () => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">Creating a Memory</Typography>
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creartor"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) => e.target.value}
-        />
+        {Object.keys(postData).map((item) => (
+          <TextField
+            key={item}
+            required
+            name={item}
+            variant="outlined"
+            label={item.slice(0, 1).toLocaleUpperCase() + item.slice(1)}
+            fullWidth
+            value={postData.item}
+            onChange={(e) =>
+              setPostData({ ...postData, [item]: e.target.value })
+            }
+          />
+        ))}
         <Button type="submit" variant="contained" color="secondary">
           Submit
         </Button>
