@@ -4,5 +4,9 @@ const url = "http://localhost:8082/posts";
 
 export const fetchPosts = () => {
   const data = axios.get(url);
-  //   console.log(data);
+  console.log(data?.data);
+};
+
+export const createPost = (data) => {
+  axios.post(`${url}/createpost`, data);
 };

@@ -8,8 +8,8 @@ const port = 8082;
 const app = express();
 
 app.use(express.json());
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(bodyParser.json({ limit: "100mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 app.use(cors());
 
 // routes
