@@ -8,9 +8,15 @@ const port = 8082;
 const app = express();
 
 app.use(express.json());
-app.use(bodyParser.json({ limit: "100mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
-app.use(cors());
+app.use(bodyParser.json({ limit: "5000mb" }));
+app.use(
+  bodyParser.urlencoded({
+    limit: "5000mb",
+    extended: true,
+    parameterLimit: 1000000,
+  })
+);
+app.use(cors({ origin: "http://localhost:3000" }));
 
 // routes
 app.use("/posts", postsRoutes);
@@ -33,9 +39,3 @@ mongoose
   .catch((er) => {
     console.log(er.message);
   });
-
-// mongoose.set('useFindAndModify',false);
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World");
-// });

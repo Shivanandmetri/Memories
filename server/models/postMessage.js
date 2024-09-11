@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-const d = new Date();
 const postSchema = mongoose.Schema({
   title: String,
   message: String,
@@ -12,7 +11,7 @@ const postSchema = mongoose.Schema({
   },
   createdAt: {
     type: String,
-    default: d.toLocaleString(),
+    default: new Date(),
   },
 });
 

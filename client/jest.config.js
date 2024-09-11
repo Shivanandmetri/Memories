@@ -143,14 +143,17 @@ const config = {
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
   // snapshotSerializers: [],
+  setupFilesAfterEnv: ["<rootDir>/jest-setup.js"],
 
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
-
   // moduleNameMapper: {
   //   "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   //   "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/__mocks__/fileMock.js",
   // },
+
+  transformIgnorePatterns: ["/node_modules/(?!(axios)/)"],
+  // silent: true,  // console.log will not work
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -186,14 +189,6 @@ const config = {
   //   "\\\\node_modules\\\\",
   //   "\\.pnp\\.[^\\\\]+$"
   // ],
-
-  transform: {
-    "^.+\\.jsx?$": "babel-jest",
-  },
-
-  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
-  testPathIgnorePatterns: ["\\\\node_modules\\\\"],
-  // testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]sx?$",
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

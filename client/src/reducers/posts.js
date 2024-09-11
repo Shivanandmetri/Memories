@@ -5,7 +5,11 @@ const reducer = (posts = initialState, action) => {
     case "CREATE":
       return [...posts, action.payload];
     case "FETCH_ALL":
-      return posts;
+      return action.payload;
+    case "UPDATE":
+      return [...posts, action.payload];
+    case "LIKE":
+      return [...posts, action.payload];
 
     default:
       return posts;
